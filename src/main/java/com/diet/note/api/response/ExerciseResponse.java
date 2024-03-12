@@ -1,4 +1,4 @@
 package com.diet.note.api.response;
 
-public class ExcerciseResponse {
+public class ExerciseResponse {
 }
