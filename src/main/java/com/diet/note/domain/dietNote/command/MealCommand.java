@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 public class MealCommand {
 
     private final MealRepository mealRepository;
-    private final MealQuery mealQuery;
 
     public Long create(MealRequest mealRequest) {
         return mealRepository.save(MealRequest.toEntity(mealRequest)).getId();
