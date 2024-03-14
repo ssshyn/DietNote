@@ -4,16 +4,14 @@ import com.diet.note.domain.dietNote.enumeration.BodyPartType;
 import com.diet.note.domain.dietNote.enumeration.ConditionType;
 import com.diet.note.domain.dietNote.enumeration.ExerciseType;
 import com.diet.note.domain.dietNote.enumeration.IntensityType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,4 +28,10 @@ public class Exercise {
     private IntensityType intensityType;
     private String contents;
     private Boolean bookmark;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT), updatable = false)
+    private User user;
+
+    private LocalDateTime createdAt = LocalDateTime.now();
 }
