@@ -1,12 +1,12 @@
 package com.diet.note.domain.dietNote.aggregate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,10 +15,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
 
-    private String userId;
     private String password;
     private String email;
+
+    @OneToMany(mappedBy = "user")
+    private List<Water> water;
+
+    @OneToMany(mappedBy = "user")
+    private List<Meal> meals;
 }

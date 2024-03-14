@@ -12,14 +12,15 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class UserCommand {
-    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
-    public Long create(JoinRequest joinRequest) {
+    public String create(JoinRequest joinRequest) {
         return userRepository.save(
                 User.builder()
-                        .userId(joinRequest.userId())
-                        .password(passwordEncoder.encode(joinRequest.password()))
+                        .id(joinRequest.userId())
+                        .password(joinRequest.password())
+//                        .password(passwordEncoder.encode(joinRequest.password()))
                         .email(joinRequest.email())
                         .build()).getId();
     }
