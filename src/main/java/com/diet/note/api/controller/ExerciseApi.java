@@ -5,6 +5,7 @@ import com.diet.note.api.response.ExerciseResponse;
 import com.diet.note.domain.dietNote.command.ExerciseCommand;
 import com.diet.note.domain.dietNote.query.ExerciseQuery;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 
+@Tag(name="exercises", description = "운동 API")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/exercise")

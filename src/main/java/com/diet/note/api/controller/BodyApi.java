@@ -5,6 +5,7 @@ import com.diet.note.api.response.BodyResponse;
 import com.diet.note.domain.dietNote.command.BodyCommand;
 import com.diet.note.domain.dietNote.query.BodyQuery;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 
+@Tag(name = "bodies", description = "신체 API")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/body")
