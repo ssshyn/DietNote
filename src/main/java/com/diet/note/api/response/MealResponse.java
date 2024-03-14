@@ -11,6 +11,12 @@ public record MealResponse(
         Integer fullType,
         Integer score,
         LocalDateTime eatTime,
+        Integer calories,
+        Integer carbohydrate,
+        Integer sodium,
+        Integer sugar,
+        Integer protein,
+        Integer fat,
         String memo,
         Boolean bookmark
 ) {
@@ -22,6 +28,12 @@ public record MealResponse(
                 meal.getFullType().getFullId(),
                 meal.getScore(),
                 meal.getEatTime(),
+                meal.getCalories(),
+                meal.getCarbohydrate(),
+                meal.getSodium(),
+                meal.getSugar(),
+                meal.getProtein(),
+                meal.getFat(),
                 meal.getMemo(),
                 meal.getBookmark()
         );

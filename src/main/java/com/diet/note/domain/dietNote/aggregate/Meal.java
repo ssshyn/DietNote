@@ -2,18 +2,14 @@ package com.diet.note.domain.dietNote.aggregate;
 
 import com.diet.note.domain.dietNote.enumeration.FullType;
 import com.diet.note.domain.dietNote.enumeration.MealTimeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,7 +17,7 @@ public class Meal {
     @Id
     @GeneratedValue
     private Long id;
-    // user
+
     // 식단명
     private String name;
     // 분류(아점저)
@@ -35,7 +31,18 @@ public class Meal {
     // 메모
     private String memo;
     // 영양성분
-
+    private Integer calories;
+    private Integer carbohydrate;
+    private Integer sodium;
+    private Integer sugar;
+    private Integer protein;
+    private Integer fat;
     // 북마크 여부
     private Boolean bookmark;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT), updatable = false)
+    private User user;
+
+    private LocalDateTime createdAt = LocalDateTime.now();
 }
