@@ -1,15 +1,14 @@
 package com.diet.note.domain.dietNote.aggregate;
 
+import com.diet.note.domain.dietNote.enumeration.Authority;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,6 +18,10 @@ public class User {
 
     private String password;
     private String email;
+    private String role;
+
+//    @Enumerated(EnumType.STRING)
+//    private Authority authority;
 
     @OneToMany(mappedBy = "user")
     private List<Water> water;
